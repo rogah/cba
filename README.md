@@ -3,6 +3,8 @@
 ```
 npm install -g
 npm link
+which cba
+readlink <full/cba/path>
 ```
 
 ```
