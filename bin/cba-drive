@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+
+const { connect } = require('../lib/google-api');
+
+program
+  .arguments('<file> [otherFiles...]')
+  .option('-a, --auth', 'set current accout type')
+  .option('-p, --push', 'set current accout type')
+  .action(connect)
+  .parse(process.argv);
+  

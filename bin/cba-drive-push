@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+
+//const { upload } = require('../lib/csv-parser');
+// const { upload } = require('../lib/google-api');
+
+program
+  .option('-a, --auth', 'set current accout type')
+  .action(() => {
+    console.log('here!');
+  })
+  .parse(process.argv);
+  

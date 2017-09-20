@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+
+const { parseCsv } = require('../lib/csv-parser');
+
+program
+  .arguments('<file> [otherFiles...]')
+  .option('-t, --type <type>', 'set current accout type')
+  .option('-o, --output <file>', 'set current accout type')
+  .action(parseCsv)
+  .parse(process.argv);
+  

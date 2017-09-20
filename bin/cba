@@ -2,9 +2,9 @@
 
 const program = require('commander');
 
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 
-const { parseCsv } = require('./lib/csv-parser');
+const { parseCsv } = require('../lib/csv-parser');
 
 // const reader = require('./lib/reader');
 // const writter = require('./lib/writter');
@@ -16,11 +16,9 @@ program
   .version(packageJson.version);
 
 program
-  .command('transaction <output> <files...>')
-  .alias('trans')
-  .description('parse transactions')
-  .option("-t, --type <type>", "set current accout type", /^(current|saving)$/i, 'current')
-  .action(parseCsv);
+  .command('csv', 'parse transactions')
+  .command('drive-push', 'parse transactions')
+  .parse(process.argv);
   // .action((output, files, options) => {
   //   const accountType = parse(options.type);
   //   const format = formatter(accountType);
@@ -49,18 +47,18 @@ program
 //     console.log('feito!', options.authenticate);
 //   });
 
-program.on('--help', () => {
-  console.log('  Examples:');
-  console.log();
-  console.log('    $ cba transaction --type current ./path/to/output.csv ./path/to/file1.csv ./path/to/file2.csv');
-  console.log('    $ cba transaction --type saving ./path/to/output.csv ./path/to/file.csv');
-  console.log('    $ cba transaction --t current ./path/to/output.csv ./path/to/file.csv');
-  console.log('    $ cba transaction ./path/to/output.csv ./path/to/file.csv');
-  console.log('    $ cba trans ./path/to/output.csv ./path/to/file.csv');
-  console.log();
-});
+// program.on('--help', () => {
+//   console.log('  Examples:');
+//   console.log();
+//   console.log('    $ cba transaction --type current ./path/to/output.csv ./path/to/file1.csv ./path/to/file2.csv');
+//   console.log('    $ cba transaction --type saving ./path/to/output.csv ./path/to/file.csv');
+//   console.log('    $ cba transaction --t current ./path/to/output.csv ./path/to/file.csv');
+//   console.log('    $ cba transaction ./path/to/output.csv ./path/to/file.csv');
+//   console.log('    $ cba trans ./path/to/output.csv ./path/to/file.csv');
+//   console.log();
+// });
 
-program.parse(process.argv);
+//program.parse(process.argv);
 
 /*
 const { push, authenticate } = require('./lib/google-api');
